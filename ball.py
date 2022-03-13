@@ -12,3 +12,5 @@ class Ball(Turtle):
         self.setposition(0, -180)
         self.showturtle()
 
+    def move(self):
+        self.forward(2)
