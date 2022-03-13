@@ -14,3 +14,9 @@ class Ball(Turtle):
 
     def move(self):
         self.forward(2)
+
+    def bounce_y(self):
+        self.setheading(360 - self.heading())
+
+    def bounce_x(self):
+        self.setheading(180 - self.heading())
