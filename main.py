@@ -9,7 +9,7 @@ screen = Screen()
 screen.setup(600, 800)
 screen.bgcolor("black")
 screen.title("BlackOut Game")
-# screen.tracer(0)
+screen.tracer(0)
 
 # Set Screen User
 tile_manager = TileManager()
@@ -34,6 +34,7 @@ while game_is_on:
         if ball_tile_dist < 25 and ball.ycor() + 20 == tile.ycor():
             print(ball_tile_dist)
             tile.hideturtle()
+            tile_manager.tiles.remove(tile)
             ball.setheading(270)
 
     # Detect collision with side walls
@@ -41,5 +42,7 @@ while game_is_on:
     # Detect collision with bottom wall
 
     # Detect collision with player paddle
+    if ball.distance(player) < 50 and ball.ycor() <= -180:
+        ball.setheading(90)
 
 screen.exitonclick()
