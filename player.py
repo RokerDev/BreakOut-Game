@@ -18,3 +18,10 @@ class Player(Turtle):
 
     def move_right(self):
         self.forward(20)
+
+    def set_player(self):
+        self.setposition(0, -200)
+
+    def set_paddle(self, event):
+        paddle_x = -300 + event.x
+        self.setx(paddle_x)
