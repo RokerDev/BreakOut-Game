@@ -1,4 +1,5 @@
 import random
+import time
 from turtle import Turtle
 
 tile_colors = ["Red", "Blue", "Yellow"]
@@ -15,5 +16,7 @@ class Tile(Turtle):
         self.color(random.choice(tile_colors))
         self.speed(0)
 
-    def broken_tile(self):
-        self.hideturtle()
+
+
+
+
