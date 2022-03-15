@@ -12,7 +12,6 @@ class TileManager:
         self.tile_width = 50
         self.tile_height = 20
         self.create_tile_board()
-        self.show_board()
 
     def create_tile(self, position):
         tile = Tile()
@@ -30,6 +29,7 @@ class TileManager:
             self.actual_pos_y -= self.space_between + self.tile_height
             self.actual_pos_x = -275
 
-    def show_board(self):
-        for tile in self.tiles:
-            tile.showturtle()
+    def remove_tile(self, tile):
+        tile.hideturtle()
+        tile.reset()
+        self.tiles.remove(tile)
