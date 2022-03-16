@@ -41,3 +41,4 @@ class Scoreboard(Turtle):
 
     def add_points(self):
         self.score += 1
+        self.show_score()
