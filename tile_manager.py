@@ -5,7 +5,7 @@ class TileManager:
 
     def __init__(self):
         self.tiles = []
-        self.actual_pos_y = 300
+        self.actual_pos_y = 100
         self.actual_pos_x = -275
         self.end_pos_x = 275
         self.space_between = 4
@@ -20,7 +20,7 @@ class TileManager:
         self.tiles.append(tile)
 
     def create_tile_board(self):
-        for pos_y in range(4):
+        for pos_y in range(5):
             self.create_tile((self.actual_pos_x, self.actual_pos_y))
             for pos_x in range(10):
                 # print(self.actual_pos_x, self.actual_pos_y)
@@ -28,8 +28,13 @@ class TileManager:
                 self.create_tile((self.actual_pos_x, self.actual_pos_y))
             self.actual_pos_y -= self.space_between + self.tile_height
             self.actual_pos_x = -275
+        # self.create_tile((0, 0))
 
     def remove_tile(self, tile):
         tile.hideturtle()
         tile.reset()
         self.tiles.remove(tile)
+
+    def end_lvl(self):
+        if len(self.tiles) == 0:
+            return True
