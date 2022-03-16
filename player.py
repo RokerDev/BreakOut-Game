@@ -10,7 +10,7 @@ class Player(Turtle):
         self.color("white")
         self.shape("square")
         self.shapesize(stretch_len=5)
-        self.setposition(0, -200)
+        self.setposition(0, -380)
         self.showturtle()
 
     def move_left(self):
@@ -20,7 +20,7 @@ class Player(Turtle):
         self.forward(20)
 
     def set_player(self):
-        self.setposition(0, -200)
+        self.setposition(0, -380)
 
     def set_paddle(self, event):
         paddle_x = -300 + event.x
