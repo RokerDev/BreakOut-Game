@@ -3,6 +3,7 @@ from turtle import Screen
 from tile_manager import TileManager
 from player import Player
 from ball import Ball
+from scoreboard import Scoreboard
 
 # Set Environment
 screen = Screen()
@@ -15,6 +16,7 @@ screen.tracer(0)
 tile_manager = TileManager()
 player = Player()
 ball = Ball()
+scoreboard = Scoreboard()
 
 # Set Player Moves
 screen.listen()
@@ -30,6 +32,7 @@ mouse_on_screen.bind('<Motion>', player.set_paddle)
 # Start Game
 move = 5
 game_is_on = True
+
 while game_is_on:
 
     ball.move(move)
@@ -43,6 +46,7 @@ while game_is_on:
         difference_x = tile.xcor() - ball.xcor()
         if 16 < difference_y < 22 and ball.distance(tile) < 36:
             tile_manager.remove_tile(tile)
+            scoreboard.add_points()
             if -27 < difference_x < 27:
                 ball.bounce_y()
             else:
@@ -50,14 +54,16 @@ while game_is_on:
 
         elif -21 < difference_y < -17 and ball.distance(tile) < 36:
             tile_manager.remove_tile(tile)
+            scoreboard.add_points()
             if -27 < difference_x < 27:
                 ball.bounce_y()
             else:
                 ball.bounce_y()
 
-        elif -10 < difference_y < 10 and 35 > ball.distance(tile) > 33:
+        elif -10 < difference_y < 10 and 35 > ball.distance(tile) > 32:
             if difference_x >= 32:
                 tile_manager.remove_tile(tile)
+                scoreboard.add_points()
                 if 100 > ball.heading() > 80:
                     ball.bounce_x(10)
                 elif 280 > ball.heading() > 260:
@@ -67,6 +73,7 @@ while game_is_on:
 
             elif difference_x <= -32:
                 tile_manager.remove_tile(tile)
+                scoreboard.add_points()
                 if 100 > ball.heading() > 80:
                     ball.bounce_x(-10)
                 elif 280 > ball.heading() > 260:
@@ -80,7 +87,7 @@ while game_is_on:
         # time.sleep(1)
 
     # Detect collision with top wall
-    if ball.ycor() >= 390:
+    if ball.ycor() >= 190:
         ball.bounce_y()
         # time.sleep(1)
 
